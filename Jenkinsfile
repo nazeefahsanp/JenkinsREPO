@@ -9,7 +9,7 @@ pipeline {
 
     stage('Code Quality Gate') {
       steps {
-        echo 'Static Code Analysis'
+        bat(script: '%workingDir%/sonar_scanner.bat', label: 'Code Quality Gate')
         echo 'Notification'
       }
     }
@@ -30,7 +30,7 @@ pipeline {
             bat(script: '%workingDir%/deploy_build.bat platform_management.configuration', label: 'Platform Management Configuration')
             bat(label: 'Platform Management PnO', script: '%workingDir%/deploy_build.bat  platform_management.PnO')
             bat(label: 'Unified Typing', script: '%workingDir%/deploy_build.bat unified_typing')
-            bat(script: 'echo "Execute Spinner"', label: 'Spinner')
+            bat(script: '%workingDir%/executeSpinner.bat', label: 'Spinner')
             bat(script: '%workingDir%/deploy_build.bat execute.postconfig_scripts', label: 'PostConfig')
             bat(script: '%workingDir%/deploy_build.bat register.customization', label: 'Compile JPOs')
           }
@@ -57,13 +57,13 @@ pipeline {
       parallel {
         stage('Automated Regression Tests') {
           steps {
-            echo 'Automated Regression Tests Completed !!'
+            bat(script: '%workingDir%/automated_Regression_test.bat', label: 'Automated Regression Tests')
           }
         }
 
         stage('Automated Feature Tests') {
           steps {
-            echo 'Automated Feature Tests Completed !!'
+            bat(script: '%workingDir%/automated_Feature_test.bat', label: 'Automated Feature Tests')
           }
         }
 
