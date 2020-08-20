@@ -73,7 +73,7 @@ pipeline {
   }
   environment {
     branchName = 'master'
-    targetTag = '20200630120006'
+    targetTag = '20200630120007'
     originTag = '20200630120005'
     workingDir = 'C:\\Apps\\jenkins\\workspace\\PWC_3DEx_Build_Package'
   }
