@@ -66,7 +66,8 @@ pipeline {
             bat(script: '%workingDir%/automated_Feature_test.bat', label: 'Automated Feature Tests')
           }
         }
-		stage('Automated IPEC Tests') {
+
+        stage('Automated IPEC Tests') {
           steps {
             bat(script: '%workingDir%/automated_IPEC_TEST.bat', label: 'Automated IPEC Tests')
           }
