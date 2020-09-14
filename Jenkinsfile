@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  parameters{
-	string(name: 'branchName', defaultValue:'master', description: 'Branch Name')
-	}
-
   stages {
     stage('Checkout') {
       steps {
@@ -31,5 +27,8 @@ pipeline {
     targetTag = '20200630120006'
     originTag = '20200630120005'
     workingDir = 'C:\\Apps\\jenkins\\workspace\\PWC_3DEx_Build_Package'
+  }
+  parameters {
+    string(name: 'branchName', defaultValue: 'master', description: 'Branch Name')
   }
 }
